@@ -1,0 +1,33 @@
+{
+  "name": "freemaneris",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "deploy": "npm run build && npm run start",
+    "vercel-build": "npm run deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RealJace/FreemanEris.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RealJace/FreemanEris/issues"
+  },
+  "homepage": "https://github.com/RealJace/FreemanEris#readme",
+  "devDependencies": {
+    "@types/node": "^20.4.9",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "eris": "^0.17.2",
+    "fastify": "^4.21.0"
+  }
+}
