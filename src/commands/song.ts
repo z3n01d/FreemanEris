@@ -68,6 +68,7 @@ export class Song extends Command {
     ];
 
     public execute(interaction: Eris.CommandInteraction) {
+        if (!(interaction instanceof Eris.CommandInteraction)) return;
         return interaction.createMessage(`Game: ${interaction.data.options[0].name}\nSong: ${interaction.data.options[1].name}`);
     }
 }
