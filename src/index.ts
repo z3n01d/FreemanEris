@@ -57,7 +57,7 @@ client.on("interactionCreate", (interaction: Eris.Interaction) => {
     if (interaction instanceof Eris.CommandInteraction) {
         const command = commands[interaction.data.name];
         try {
-            //return command.execute(interaction);
+            return command.execute(interaction);
         } catch (e) {
             console.log(e);
         }
@@ -70,7 +70,9 @@ app.get("/",function(request,reply) {
     reply.send("Client is running");
 });
 
-app.listen({port: 3000},function(err,address) {
+const PORT = Number(process.env.PORT) || 3000;
+
+app.listen({port: PORT},function(err,address) {
     if (err) {
         app.log.error(err);
     }
