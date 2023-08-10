@@ -7,7 +7,7 @@ import { Command } from "./command.js";
 dotenv.config();
 
 const app = Fastify.fastify({
-    logger: true
+    logger: false
 })
 
 var commands = {};
@@ -40,7 +40,7 @@ async function setupCommands() {
 }
 
 client.on("ready", async () => {
-    console.log(`Logged in as ${client.user.username}`);
+    console.log(`Logged in as ${client.user.username}#${client.user.discriminator.toString()}`);
     try {
         await setupCommands();
     } catch (err) {
@@ -60,6 +60,15 @@ client.on("interactionCreate", (interaction: Eris.Interaction) => {
             return command.execute(interaction);
         } catch (e) {
             console.log(e);
+            return interaction.createMessage({
+                embeds: [
+                    {
+                        title: "An error has occured while running this command",
+                        description: "```" + e + "```",
+                        color: 15548997
+                    }
+                ]
+            });
         }
     }
 })
